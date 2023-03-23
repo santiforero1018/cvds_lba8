@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+    <h:form id="guess_form">
+        <p:outputLabel id="luckyNum" value="#{guessBean.luckyNum}" style="display:none"/>
+        <p:outputLabel value="Digite el número De La Suerte:  "/>
+        <p:inputText type="number" title="Try" binding="#{entrada}"/>
+        <p:outputLabel value="Estado Actual:  "/>
+        <p:outputLabel value="#{guessBean.state}"/>
+        <p:outputLabel value=";  Acumulado Actual:  "/>
+        <p:outputLabel value="#{guessBean.price}"/>
+        <p:outputLabel value=";  Número De Intentos:  "/>
+        <p:outputLabel value="#{guessBean.tries}"/>
+        <p:outputLabel value="  "/>
+        <p:commandButton value="Adivinar" update="guess_form" actionListener="#{guessBean.guess(entrada.value)}" />
+        <p:outputLabel value="  "/>
+        <p:commandButton value="Reiniciar" update="guess_form" actionListener="#{guessBean.restart}" />
+
+        <div class="card">
+            <p:dataTable var="tries" value="#{guessBean.triesList}">
+                <p:column headerText="# Intento">
+                    <h:outputText value = "#{guessBean.triesList.get(guessBean.triesList.indexOf(tries))}"/>
+                </p:column>
+                <p:column headerText="# Ingresado">
+                    <h:outputText value = "#{guessBean.luckyNumbers.get(guessBean.triesList.indexOf(tries))}"/>
+                </p:column>
+            </p:dataTable>
+        </div>
+
+    </h:form>
+</h:body>
+
+</html>
