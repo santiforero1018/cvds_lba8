@@ -1,4 +1,4 @@
-package edu.eci.cvds.beans;
+package edu.eci.cvds.servlet.bean;
 
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
