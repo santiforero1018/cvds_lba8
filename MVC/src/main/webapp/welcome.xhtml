@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+      <style>
+            h1{
+                  color: #ed1c24;
+                  font-weight: bold;
+                  font-size: 40px;
+                  font-family: monospace;
+                  text-transform: uppercase;
+                  text-align: center;
+            }
+      </style>
+      <h:form id="welcome_form">
+            <h1>bienvenido</h1>
+            <h:panelGrid>
+                  <p:outputLabel id="playerName" value="#{userBean.playerName}" style="display:none"/>
+                  <p:outputLabel value="Digite su nombre de usuario:  "/>
+                  <p:inputText  id="name" binding="#{entrada}"/>
+            </h:panelGrid>
+            <p:linkButton outcome="guess" value="Start"/>
+      </h:form>
+</h:body>
+
+</html>

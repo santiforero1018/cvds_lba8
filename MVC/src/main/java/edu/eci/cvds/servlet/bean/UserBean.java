@@ -13,5 +13,17 @@ import org.springframework.stereotype.Component;
 @ManagedBean(name = "userBean")
 @SessionScoped
 public class UserBean {
-    
+    private String playerName;
+
+    public UserBean(){
+
+    }
+
+    public void setPlayerName(String playerName){
+        this.playerName = playerName;
+    }
+
+    public String getPlayerName(){
+        return this.playerName;
+    }
 }

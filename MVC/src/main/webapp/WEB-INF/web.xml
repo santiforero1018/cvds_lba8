@@ -17,8 +17,7 @@
   </servlet-mapping>
 
   <welcome-file-list>
-    <welcome-file>faces/guess.xhtml</welcome-file>
+    <welcome-file>faces/welcome.xhtml</welcome-file>
   </welcome-file-list>
 
 </web-app>
-
