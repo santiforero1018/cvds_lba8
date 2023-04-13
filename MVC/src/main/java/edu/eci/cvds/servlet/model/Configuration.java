@@ -7,14 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+//@Table(name= "Configuration")
 @Entity
-@Table(name= "CONFIGURATION")
 public class Configuration {
 
+    
+    //@Column(name = "propied")
     @Id
-    @Column(name = "PROPIEDAD")
     private String propiedad;
-    @Column(name = "VALOR")
+    //@Column(name = "VALOR")
     private String valor;
 
     public Configuration(String propiedad, String valor){
