@@ -7,7 +7,13 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+
+import edu.eci.cvds.servlet.Services.ConfigurationService;
+import edu.eci.cvds.servlet.model.Configuration;
 
 @Component
 @ManagedBean(name = "guessBean")
@@ -20,8 +26,19 @@ public class GuessBean {
     private ArrayList<Integer> triesList;
     private ArrayList<Integer> luckyNumbers;
 
+    @Autowired
+    ConfigurationService configurationService;
+
     public GuessBean(){
         restart();
+    }
+
+    @Bean
+    public CommandLineRunner run() throws Exception{
+        return (args) ->{
+            configurationService.addConfiguration(new Configuration("premio", "100"));
+            price = Integer.parseInt(configurationService.getConfiguration(1L).getValue());
+        };
     }
     public void guess(int tries){
 
