@@ -1,18 +1,20 @@
 package edu.eci.cvds.servlet.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name= "Configuration")
 public class Configuration {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    private Long configurationId;
+    @Column(name = "propiedad")
     private String propiedad;
+    @Column(name = "valor")
     private String valor;
 
     public Configuration(String propiedad, String valor){
@@ -20,12 +22,8 @@ public class Configuration {
         this.valor = valor;
     }
 
-    public Long getId(){
-        return this.configurationId;
-    }
-
-    public void setId(Long configurationId){
-        this.configurationId = configurationId;
+    public Configuration(){
+        
     }
 
     public void setValue(String valor){
@@ -48,7 +46,6 @@ public class Configuration {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((configurationId == null) ? 0 : configurationId.hashCode());
         result = prime * result + ((propiedad == null) ? 0 : propiedad.hashCode());
         result = prime * result + ((valor == null) ? 0 : valor.hashCode());
         return result;
@@ -63,11 +60,6 @@ public class Configuration {
         if (getClass() != obj.getClass())
             return false;
         Configuration other = (Configuration) obj;
-        if (configurationId == null) {
-            if (other.configurationId != null)
-                return false;
-        } else if (!configurationId.equals(other.configurationId))
-            return false;
         if (propiedad == null) {
             if (other.propiedad != null)
                 return false;
@@ -80,4 +72,11 @@ public class Configuration {
             return false;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Configuration [propiedad=" + propiedad + ", valor=" + valor + "]";
+    }
+
+    
 }

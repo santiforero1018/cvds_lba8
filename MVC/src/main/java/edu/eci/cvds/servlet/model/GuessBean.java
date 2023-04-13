@@ -1,5 +1,6 @@
-package edu.eci.cvds.servlet.bean;
+package edu.eci.cvds.servlet.model;
 
+import java.io.Serializable;
 import java.security.DrbgParameters.Reseed;
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,13 +13,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import edu.eci.cvds.servlet.Services.ConfigurationService;
-import edu.eci.cvds.servlet.model.Configuration;
-
 @Component
 @ManagedBean(name = "guessBean")
 @SessionScoped
-public class GuessBean {
+public class GuessBean implements Serializable {
     private int luckyNum;
     private int tries;
     private int price;
@@ -37,7 +35,7 @@ public class GuessBean {
     public CommandLineRunner run() throws Exception{
         return (args) ->{
             configurationService.addConfiguration(new Configuration("premio", "100"));
-            price = Integer.parseInt(configurationService.getConfiguration(1L).getValue());
+            price = Integer.parseInt(configurationService.getConfiguration("premio").getValue());
         };
     }
     public void guess(int tries){

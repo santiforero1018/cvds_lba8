@@ -1,4 +1,4 @@
-package edu.eci.cvds.servlet.bean;
+package edu.eci.cvds.servlet.model;
 
 import java.security.DrbgParameters.Reseed;
 import java.util.ArrayList;
