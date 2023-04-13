@@ -1,5 +1,7 @@
 package edu.eci.cvds.servlet.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,10 @@ public class ConfigurationService {
 
     public Configuration getConfiguration(String configurationId){
         return configurationRepository.findById(configurationId).get();
+    }
+
+    public List<Configuration> getAllConfiguration(){
+        return configurationRepository.findAll();
     }
 
     public Configuration updateConfiguration(Configuration configuration){

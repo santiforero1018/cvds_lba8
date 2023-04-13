@@ -17,11 +17,10 @@
       <h:form id="welcome_form">
             <h1>bienvenido</h1>
             <h:panelGrid>
-                  <p:outputLabel id="playerName" value="#{userBean.playerName}" style="display:none"/>
                   <p:outputLabel value="Digite su nombre de usuario:  "/>
-                  <p:inputText  id="name" binding="#{entrada}"/>
+                  <p:inputText  value="#{userBean.playerName}"/>
             </h:panelGrid>
-            <p:commandButton value="Start" actionListener="guess.xhtml"/>
+            <p:commandButton value="Start" action="#{userBean.enter}"/>
       </h:form>
 </h:body>
 

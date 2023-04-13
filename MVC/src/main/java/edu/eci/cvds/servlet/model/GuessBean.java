@@ -7,10 +7,10 @@ import java.util.Random;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.springframework.context.annotation.Bean;
+import org.springframework.boot.CommandLineRunner;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,28 +27,20 @@ public class GuessBean implements Serializable {
     @Autowired
     ConfigurationService configurationService;
 
-    public GuessBean(){
+    public GuessBean() {
         restart();
     }
 
-    @Bean
-    public CommandLineRunner run() throws Exception{
-        return (args) ->{
-            configurationService.addConfiguration(new Configuration("premio", "100"));
-            price = Integer.parseInt(configurationService.getConfiguration("premio").getValue());
-        };
-    }
-    public void guess(int tries){
+    public void guess(int tries) {
 
-        if (tries == this.luckyNum){
-            //this.price += 100000;
-            
+        if (tries == this.luckyNum) {
+            // this.price += 100000;
+
             this.state = "WIN";
             this.tries++;
             this.triesList.add(this.tries);
             this.luckyNumbers.add(tries);
-        }
-        else {
+        } else {
             this.price -= 10000;
             this.state = "LOSE";
             this.tries++;
@@ -57,15 +49,14 @@ public class GuessBean implements Serializable {
         }
     }
 
-    public void restart(){
-        this.luckyNum = (int)(Math.random()*20+1);
+    public void restart() {
+        this.luckyNum = (int) (Math.random() * 20 + 1);
         this.luckyNumbers = new ArrayList();
         this.triesList = new ArrayList();
         this.state = "Lose";
         this.tries = 0;
-        this.price = 100000;
     }
-    
+
     public void setLuckyNum(int luckyNum) {
         this.luckyNum = luckyNum;
     }
@@ -82,28 +73,37 @@ public class GuessBean implements Serializable {
         this.state = state;
     }
 
-    public int getLuckyNum(){
+    public int getLuckyNum() {
         return this.luckyNum;
     }
 
-    public int getTries(){
+    public int getTries() {
         return this.tries;
     }
 
-    public int getPrice(){
+    public int getPrice() {
         return this.price;
     }
 
-    public String getState(){
+    public String getState() {
         return this.state;
     }
 
     public ArrayList<Integer> getTriesList() {
-		return this.triesList;
-	} 
+        return this.triesList;
+    }
 
     public ArrayList<Integer> getLuckyNumbers() {
-		return this.luckyNumbers;
-	}
+        return this.luckyNumbers;
+    }
 
+    @Bean
+    public CommandLineRunner premio() {
+        return args -> {
+            configurationService.addConfiguration(new Configuration("Premio", "100000"));
+            configurationService.getAllConfiguration().forEach(configuration -> System.out.println(configuration));
+            price = Integer.parseInt(configurationService.getConfiguration("Premio").getValue());
+            restart();
+        };
+    }
 }

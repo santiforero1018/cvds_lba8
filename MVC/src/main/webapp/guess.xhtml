@@ -6,8 +6,9 @@
 <h:head></h:head>
 <h:body>
     <h:form id="guess_form">
+        <p:outputLabel id="name" value="#{userBean.playerName}"/>
         <p:outputLabel id="luckyNum" value="#{guessBean.luckyNum}" style="display:none"/>
-        <p:outputLabel value="Digite el número De La Suerte:  "/>
+        <p:outputLabel value="  Digite el número De La Suerte:  "/>
         <p:inputText type="number" title="Try" binding="#{entrada}"/>
         <p:outputLabel value="Estado Actual:  "/>
         <p:outputLabel value="#{guessBean.state}"/>

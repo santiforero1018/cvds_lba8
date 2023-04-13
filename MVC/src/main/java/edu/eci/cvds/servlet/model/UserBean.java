@@ -26,4 +26,8 @@ public class UserBean {
     public String getPlayerName(){
         return this.playerName;
     }
+
+    public String enter(){
+        return "guess.xhtml";
+    }
 }
