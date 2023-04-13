@@ -21,7 +21,7 @@
                   <p:outputLabel value="Digite su nombre de usuario:  "/>
                   <p:inputText  id="name" binding="#{entrada}"/>
             </h:panelGrid>
-            <p:linkButton outcome="guess" value="Start"/>
+            <p:commandButton value="Start" actionListener="guess.xhtml"/>
       </h:form>
 </h:body>
 

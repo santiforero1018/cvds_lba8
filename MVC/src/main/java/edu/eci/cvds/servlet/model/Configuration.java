@@ -1,20 +1,20 @@
 package edu.eci.cvds.servlet.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 //import jakarta.persistence.GeneratedValue;
 //import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name= "Configuration")
+@Table(name= "CONFIGURATION")
 public class Configuration {
 
     @Id
-    @Column(name = "propiedad")
+    @Column(name = "PROPIEDAD")
     private String propiedad;
-    @Column(name = "valor")
+    @Column(name = "VALOR")
     private String valor;
 
     public Configuration(String propiedad, String valor){
