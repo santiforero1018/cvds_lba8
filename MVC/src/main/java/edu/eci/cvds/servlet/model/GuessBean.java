@@ -98,7 +98,7 @@ public class GuessBean implements Serializable {
     }
 
     @Bean
-    public CommandLineRunner premio() {
+    public CommandLineRunner price() {
         return args -> {
             configurationService.addConfiguration(new Configuration("Premio", "100000"));
             configurationService.getAllConfiguration().forEach(configuration -> System.out.println(configuration));
